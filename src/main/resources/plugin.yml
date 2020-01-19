@@ -1,0 +1,11 @@
+name: BFGMaster
+main: org.bitfixgaming.bfgmaster.Main
+version: 1.0
+author: HDR
+api-version: 1.13
+website: https://www.bitfixgaming.no/
+
+commands:
+  sethome:
+    description: Sets player home.
+    usage: /sethome name
