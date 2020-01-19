@@ -2,7 +2,9 @@ package org.bitfixgaming.bfgmaster;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import org.bitfixgaming.bfgmaster.commands.deleteHomeCommand;
 import org.bitfixgaming.bfgmaster.commands.setHomeCommand;
+import org.bitfixgaming.bfgmaster.commands.teleportHomeCommand;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -16,6 +18,8 @@ public class Main extends JavaPlugin {
     @Override
     public void onEnable(){
         this.getCommand("sethome").setExecutor(new setHomeCommand());
+        this.getCommand("delhome").setExecutor(new deleteHomeCommand());
+        this.getCommand("home").setExecutor(new teleportHomeCommand());
         createJson();
         readJson();
     }

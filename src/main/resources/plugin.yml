@@ -9,3 +9,9 @@ commands:
   sethome:
     description: Sets player home.
     usage: /sethome name
+  delhome:
+    description: Deletes a player home.
+    usage: /delhome
+  home:
+    description: Teleports a player home.
+    usage: /home
