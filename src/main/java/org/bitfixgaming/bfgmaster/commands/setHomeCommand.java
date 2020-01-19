@@ -41,7 +41,6 @@ public class setHomeCommand implements CommandExecutor {
                 try {
                     if(!getHomes.toString().isEmpty()){
                         JsonObject homeData = getHomes.getAsJsonObject();
-                        player.sendMessage("Home Name: " + homeData.get("Home").toString() + "World: " + homeData.get("World").toString() + "X:" + homeData.get("X").toString() + "Y:" + homeData.get("Y").toString() + "Z:" + homeData.get("Z").toString());
                         player.sendMessage(ChatColor.RED + "A Home already exists, please delete it with /delhome first.");
                     }
                 } catch(NullPointerException ignore){
