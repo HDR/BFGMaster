@@ -1,15 +1,14 @@
 package org.bitfixgaming.bfgmaster;
 
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import org.bitfixgaming.bfgmaster.commands.deleteHomeCommand;
 import org.bitfixgaming.bfgmaster.commands.setHomeCommand;
 import org.bitfixgaming.bfgmaster.commands.teleportHomeCommand;
+import org.bitfixgaming.bfgmaster.commands.tprequestCommand;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import static org.bitfixgaming.bfgmaster.Utils.readJson;
+import static org.bitfixgaming.bfgmaster.Utils.createJson;
 
 public class Main extends JavaPlugin {
 
@@ -20,37 +19,8 @@ public class Main extends JavaPlugin {
         this.getCommand("sethome").setExecutor(new setHomeCommand());
         this.getCommand("delhome").setExecutor(new deleteHomeCommand());
         this.getCommand("home").setExecutor(new teleportHomeCommand());
-        createJson();
-        readJson();
-    }
-
-    public static void SaveData() {
-        String jstring = HomeData.toString();
-        try {
-            Utils.create("plugins/BFG", "homes.json", jstring);
-        } catch (IOException ignore) {}
-    }
-
-    private static void createJson() {
-        String CreateString = "{}";
-        File file = new File("plugins/BFG/homes.json");
-        if (!file.exists()) {
-            try {
-                Utils.create("plugins/BFG", "homes.json", CreateString);
-            } catch (IOException ignore) {}
-        }
-        if (file.length() == 0) {
-            try {
-                Utils.create("plugins/BFG", "homes.json", CreateString);
-            } catch (IOException ignore) {}
-        }
-    }
-
-    private static void readJson() {
-        JsonParser parser = new JsonParser();
-        try {
-            Object obj = parser.parse(new FileReader("plugins/BFG/homes.json"));
-            HomeData = (JsonObject) obj;
-        } catch (IOException ignore) {}
+        this.getCommand("tpa").setExecutor((new tprequestCommand()));
+        createJson("plugins/config/BFG/", "homes.json");
+        readJson("plugins/config/BFG/homes.json");
     }
 }

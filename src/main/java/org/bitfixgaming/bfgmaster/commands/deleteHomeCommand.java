@@ -9,7 +9,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import static org.bitfixgaming.bfgmaster.Main.HomeData;
-import static org.bitfixgaming.bfgmaster.Main.SaveData;
+import static org.bitfixgaming.bfgmaster.Utils.SaveData;
 
 public class deleteHomeCommand implements CommandExecutor {
     @Override
@@ -20,16 +20,12 @@ public class deleteHomeCommand implements CommandExecutor {
             try {
                 if (!getHomes.toString().isEmpty()) {
                     JsonObject homeData = getHomes.getAsJsonObject();
-                    //player.sendMessage("Home Name: " + homeData.get("Home").toString() + "World: " + homeData.get("World").toString() + "X:" + homeData.get("X").toString() + "Y:" + homeData.get("Y").toString() + "Z:" + homeData.get("Z").toString());
                     player.sendMessage(ChatColor.GREEN + homeData.get("Home").toString() + ChatColor.GOLD + " has been deleted.");
                     HomeData.remove(player.getName());
-                    SaveData();
+                    SaveData("homes.json", HomeData.toString());
                     return true;
                 }
-            } catch(NullPointerException ignore){
-                    player.sendMessage(ChatColor.RED + "You have no homes, Please stop being homeless and try again later.");
-                    return true;
-                }
+            } catch(NullPointerException ignore){ player.sendMessage(ChatColor.RED + "You have no homes, Please stop being homeless and try again later.");return true; }
         }
         return false;
     }

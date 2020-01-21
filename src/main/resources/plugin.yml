@@ -15,3 +15,6 @@ commands:
   home:
     description: Teleports a player home.
     usage: /home
+  tpa:
+    description: Request a teleport to a player.
+    usage: /tpa username

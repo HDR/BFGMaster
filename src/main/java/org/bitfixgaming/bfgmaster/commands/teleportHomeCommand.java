@@ -12,7 +12,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import static org.bitfixgaming.bfgmaster.Main.HomeData;
-import static org.bitfixgaming.bfgmaster.Main.SaveData;
 
 public class teleportHomeCommand implements CommandExecutor {
     @Override
@@ -31,10 +30,7 @@ public class teleportHomeCommand implements CommandExecutor {
                     player.sendMessage(ChatColor.GOLD + "Teleporting you to " + ChatColor.GREEN + homeData.get("Home").toString());
                     return true;
                 }
-            } catch(NullPointerException ignore){
-                player.sendMessage(ChatColor.RED + "You have no homes, Please stop being homeless and try again later.");
-                return true;
-            }
+            } catch(NullPointerException ignore){ player.sendMessage(ChatColor.RED + "You have no homes, Please stop being homeless and try again later.");return true; }
         }
         return false;
     }
